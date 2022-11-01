@@ -44,12 +44,19 @@ const playerSchema = new Schema(
   },
   {
     toJSON: {
+      virtuals: true,
       getters: true,
+      setters: true,
     },
   }
 );
 
 // TODO add randomly generated properties and attributes to player
+
+// to create and retrieve player's array of item (or: "arsenal"):
+playerSchema.virtual("arsenal").get(function () {
+  return this.items;
+});
 
 const Player = model("Player", playerSchema);
 
