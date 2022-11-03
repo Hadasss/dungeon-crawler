@@ -31,6 +31,8 @@ const userSchema = new Schema(
   }
 );
 
+// TODO: Link a user to a specific player and vice versa
+
 const User = model("User", userSchema);
 
 export default User;

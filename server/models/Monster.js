@@ -6,7 +6,7 @@ const monsterSchema = new Schema({
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
   },
-  monsterLevel: {
+  challenge: {
     type: Number,
     required: true,
   },
