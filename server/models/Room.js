@@ -13,6 +13,18 @@ const roomSchema = new Schema({
   checkpoint: {
     type: Boolean,
   },
+  monsters: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Monster",
+    },
+  ],
+  items: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Item",
+    },
+  ],
 });
 
 const Room = model("Room", roomSchema);
