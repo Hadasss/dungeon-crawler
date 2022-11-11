@@ -44,6 +44,8 @@ monsterSchema.methods.die = function() {
   let xpValue = Math.floor(Math.random() * 100) + 1;
   xpValue = xpValue * this.challenge;
 
+  // TODO: Drop items
+
   return xpValue;
 }
 
@@ -51,5 +53,3 @@ monsterSchema.methods.die = function() {
 const Monster = model("Monster", monsterSchema);
 
 export default Monster;
-
-// TODO: items

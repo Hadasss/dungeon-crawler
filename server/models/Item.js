@@ -35,10 +35,10 @@ const itemSchema = new Schema({
   // When assigning a random type, draw the attributes
 });
 
-const Item = model("Item", itemSchema);
-
 itemSchema.methods.getRandomItem = function () {
   return Math.random(items);
 };
+
+const Item = model("Item", itemSchema);
 
 export default Item;
