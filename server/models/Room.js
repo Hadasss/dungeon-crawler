@@ -33,7 +33,7 @@ const roomSchema = new Schema({
 // Methods
 
 // Fill the room with a random number and type of monsters and items
-roomSchema.methods.fillRoon = function() {
+roomSchema.methods.fillRoom = function() {
   // Define the max number of monsters based on the room level
   let maxNumMonsters = this.roomLevel * 2;
   let numMonsters = Math.floor(Math.random() * maxNumMonsters); // Include the possibility of 0 monsters
