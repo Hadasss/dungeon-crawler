@@ -99,25 +99,60 @@ playerSchema.virtual("inventory").get(function () {
 });
 
 // Virtuals for attributes...
+// Virtuals seem to be distinct from other attributes, so maybe we use virtuals for score and stats
+// score
+playerSchema.virtual("score")
+  .get(function() {
+    // Set score to a combination of player's gold and xp
+    return this.gold + this.xp;
+  })
+  .set(function(value) {
+    this.set(value);
+  });
 
-// Set and get damage
 
-// Set and get health
+// TODO: Create virtuals for each of the bonuses.  Bonuses should start at score 12 and reach max 4
 
-// Set and get armorClass
-
-// 
-
+  
 // -----------------------
-
-
+  
+  
 // Methods for actions...
 
 // Roll attack dice
+playerSchema.methods.rollAttack = function() {
+  let roll = Math.floor(Math.random() * 20) + 1;
+  return roll;
+}
+
+// equip a weapon from inventory
+playerSchema.methods.equipWeapon = function() {
+  // Assign equipped weapons to items array at index [0]
+}
+
+// equip armor from inventory
+playerSchema.methods.equipArmor = function() {
+  // Assign equipped armor to items array index [1]
+}
+
+// Deal damage
+playerSchema.methods.dealDamage = function() {
+  // Grab player's damage score from equipped weapon
+  const weapon = this.items[0];
+
+  const maxDamage = weapon.value;
+
+  // Roll between 1 and the maxDamage value pulled from the weapon's value attribute
+  let roll = Math.floor(Math.random() * maxDamage) + 1;
+  
+  // Add any modifiers to the attack roll and compute total
+  let total = roll + Math.floor(this.strength / 5);
+
+  return total;
+}
 
 // levelUp - will set new level and nextLevel value, and increment health and other attributes
 
-// equip an item from inventory
 
 const Player = model("Player", playerSchema);
 
